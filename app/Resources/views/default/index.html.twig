@@ -11,6 +11,16 @@
             <table width="100%">
                 <tr>
                     <td valign="top" align="center" width="33%">
+                        
+                        <p>Choose</p>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                        <br>
+                        
+                    </td>
+                    
+                    <td valign="top" align="center" width="33%">
                         <p>Player Picked</p>
                         <h2>     
                             {% if the_match is defined %}                   
@@ -28,42 +38,39 @@
                             {% endif %}
                         </h2>
                     </td>
-                    <td valign="top" align="center" width="33%">
-                        
-                        {% if the_match is defined %}                        
-                            {% if the_match.getUserWon %}
-                                <h2 style="color:blue;">PLAYER WINS! Play Again</h2>
-                            {% elseif the_match.getCompWon %}
-                                <h2 style="color:red;">COMPUTER WINS! Play Again</h2>
-                            {% elseif the_match.getUserCompTie %}
-                                <h2>TIE! Play Again</h2>
-                            {% endif %}
-                        {% endif %}
 
-                        <p>Choose</p>
-                        {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        {{ form_end(form) }}
-                        <br>
-                        
-                    </td>
                     <td valign="top" align="center" width="33%">
                         <p>Computer Picked</p>
                         
                         <h2>
                             {% if the_match is not defined %}
                                 &nbsp;
-                            {% else %}
-                                {% if the_match.getCompRock == 1 %}
-                                    ROCK
-                                {% elseif the_match.getCompPaper == 1 %}
-                                    PAPER
-                                {% elseif the_match.getCompScissors == 1 %}
-                                    SCISSORS
-                                {% elseif the_match.getCompSpock == 1 %}
-                                    SPOCK
-                                {% elseif the_match.getCompLizard == 1 %}
-                                    LIZARD
+                                {% else %}
+                                    {% if the_match.getCompRock == 1 %}
+                                        ROCK
+                                    {% elseif the_match.getCompPaper == 1 %}
+                                        PAPER
+                                    {% elseif the_match.getCompScissors == 1 %}
+                                        SCISSORS
+                                    {% elseif the_match.getCompSpock == 1 %}
+                                        SPOCK
+                                    {% elseif the_match.getCompLizard == 1 %}
+                                        LIZARD
+                                    {% endif %}
+                            {% endif %}
+                            {% if the_match is defined %}                        
+                                {% if the_match.getUserWon %}
+                                    <script language="Javascript">
+                                    alert("Player Wins! Play Again");
+                                    </script>
+                                {% elseif the_match.getCompWon %}
+                                    <script language="Javascript">
+                                    alert("Computer Wins! Play Again");
+                                    </script>
+                                {% elseif the_match.getUserCompTie %}
+                                    <script language="Javascript">
+                                    alert("Tie! Play Again");
+                                    </script>
                                 {% endif %}
                             {% endif %}
                         </h2>
@@ -108,3 +115,4 @@
     }
 </style>
 {% endblock %}
+
