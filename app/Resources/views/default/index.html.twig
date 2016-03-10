@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id="wrapper">
+        <div id="container">
+  
+            <h1>ROCK PAPER SCISSORS SPOCK LIZARD</h1>
+            <p><a target="_blank" href="http://www.samkass.com/theories/RPSSL.html">Rules</a>
+
+            <table width="100%">
+                <tr>
+                    <td valign="top" align="center" width="33%">
+                        <p>Player Picked</p>
+                        <h2>     
+                            {% if the_match is defined %}                   
+                                {% if the_match.getUserRock == 1 %}
+                                    ROCK
+                                {% elseif the_match.getUserPaper == 1 %}
+                                    PAPER
+                                {% elseif the_match.getUserScissors == 1 %}
+                                    SCISSORS
+                                {% elseif the_match.getUserSpock == 1 %}
+                                    SPOCK
+                                {% elseif the_match.getUserLizard == 1 %}
+                                    LIZARD
+                                  {% endif %}
+                            {% endif %}
+                        </h2>
+                    </td>
+                    <td valign="top" align="center" width="33%">
+                        
+                        {% if the_match is defined %}                        
+                            {% if the_match.getUserWon %}
+                                <h2 style="color:blue;">PLAYER WINS! Play Again</h2>
+                            {% elseif the_match.getCompWon %}
+                                <h2 style="color:red;">COMPUTER WINS! Play Again</h2>
+                            {% elseif the_match.getUserCompTie %}
+                                <h2>TIE! Play Again</h2>
+                            {% endif %}
+                        {% endif %}
+
+                        <p>Choose</p>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                        <br>
+                        
+                    </td>
+                    <td valign="top" align="center" width="33%">
+                        <p>Computer Picked</p>
+                        
+                        <h2>
+                            {% if the_match is not defined %}
+                                &nbsp;
+                            {% else %}
+                                {% if the_match.getCompRock == 1 %}
+                                    ROCK
+                                {% elseif the_match.getCompPaper == 1 %}
+                                    PAPER
+                                {% elseif the_match.getCompScissors == 1 %}
+                                    SCISSORS
+                                {% elseif the_match.getCompSpock == 1 %}
+                                    SPOCK
+                                {% elseif the_match.getCompLizard == 1 %}
+                                    LIZARD
+                                {% endif %}
+                            {% endif %}
+                        </h2>
+                    </td>
+                </tr>
+            </table>
+        
+            {% if matches is defined %}
+                {{ include('default/history.html.twig', { 'matches': matches }) }}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    button { width: 100%; font-size: 20px; margin-bottom: .5em;}
+    body { background: #FFF; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #FFF; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+    #icon-book { display: none; }
+
+    @media (min-width: 768px) {
+        #wrapper { width: 80%; margin: 2em auto; }
+        #icon-book { display: inline-block; }
+        #status a, #next a { display: block; }
+
+        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    }
+</style>
+{% endblock %}

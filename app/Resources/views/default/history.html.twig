@@ -1,0 +1,56 @@
+{% if matches|length > 0 %}
+<br>
+<p><h2>Game Stats</h2></p>
+<table width="100%">
+   <thead>
+        <th align="left"># of Matches</th>
+        <th align="left">Player Victories</th>
+        <th align="left">Tied</th>
+        <th align="left">Computer Victories</th>
+    </thead> 
+    <tbody>       
+        <tr>
+            <td align="left"><em>{{ matches | length }} </em></td>
+            <td align="left"> <em>{{ stats['wins'] }}</em></td>
+            <td align="left"> <em>{{ stats['ties'] }}</em></td>
+            <td align="left"> <em>{{ stats['losses'] }}</em></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<p><h2>Selection Stats</h2></p>
+<table width="100%">
+    <thead>
+        <th align="left">Choice</th>
+        <th align="left">Player</th>
+        <th align="left">Computer</th>
+    </thead> 
+    <tbody> 
+        <tr>
+            <td align="left">Rock</td>
+            <td align="left">{{ stats['player_rock'] }}</td>
+            <td align="left">{{ stats['comp_rock'] }}</td>
+        </tr>
+        <tr>
+            <td align="left">Paper</td>
+            <td align="left">{{ stats['player_paper'] }}</td>
+            <td align="left">{{ stats['comp_paper'] }}</td>
+        </tr>
+        <tr>
+            <td align="left">Scissors</td>
+            <td align="left">{{ stats['player_scissors'] }}</td>
+            <td align="left">{{ stats['comp_scissors'] }}</td>
+        </tr>
+        <tr>
+            <td align="left">Spock</td>
+            <td align="left">{{ stats['player_spock'] }}</td>
+            <td align="left">{{ stats['comp_spock'] }}</td>
+        </tr>
+        <tr>
+            <td align="left">Lizard</td>
+            <td align="left">{{ stats['player_lizard'] }}</td>
+            <td align="left">{{ stats['comp_lizard'] }}</td>
+        </tr>
+     </tbody>
+</table>
+{% endif %}
