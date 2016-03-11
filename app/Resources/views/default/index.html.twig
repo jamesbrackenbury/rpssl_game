@@ -11,6 +11,16 @@
             <table width="100%">
                 <tr>
                     <td valign="top" align="center" width="33%">
+
+                        {% if the_match is defined %}                        
+                            {% if the_match.getUserWon %}
+                                <h2 style="color:blue;">PLAYER WINS! Play Again</h2>
+                            {% elseif the_match.getCompWon %}
+                                <h2 style="color:red;">YOU LOSE! Try Again</h2>
+                            {% elseif the_match.getUserCompTie %}
+                                <h2 style="color:yellow;">TIE! Try Again</h2>
+                            {% endif %}
+                        {% endif %}
                         
                         <p>Choose</p>
                         {{ form_start(form) }}
@@ -126,21 +136,6 @@
                                     {% elseif the_match.getCompLizard == 1 %}
                                         LIZARD
                                     {% endif %}
-                            {% endif %}
-                            {% if the_match is defined %}                        
-                                {% if the_match.getUserWon %}
-                                    <script language="Javascript">
-                                    alert("Player Wins! Play Again");
-                                    </script>
-                                {% elseif the_match.getCompWon %}
-                                    <script language="Javascript">
-                                    alert("Computer Wins! Play Again");
-                                    </script>
-                                {% elseif the_match.getUserCompTie %}
-                                    <script language="Javascript">
-                                    alert("Tie! Play Again");
-                                    </script>
-                                {% endif %}
                             {% endif %}
                         </h2>
                     </td>
