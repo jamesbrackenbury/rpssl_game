@@ -20,12 +20,14 @@
                         
                     </td>
                     
-                    <td valign="top" align="center" width="33%">
+                    <td valign="top" align="center" width="23%">
                         <p>Player Picked</p>
                         <h2>     
                             {% if the_match is defined %}                   
-                                {% if the_match.getUserRock == 1 %}
-                                    ROCK
+                                {% if the_match.getUserRock == 1 %} 
+                                    ROCK 
+                                {% elseif the_match.getUserPaper == 1 %}
+                                    PAPER
                                 {% elseif the_match.getUserPaper == 1 %}
                                     PAPER
                                 {% elseif the_match.getUserScissors == 1 %}
@@ -39,7 +41,74 @@
                         </h2>
                     </td>
 
-                    <td valign="top" align="center" width="33%">
+                    <td valign="top" align="center" width="15%" style="padding: 50px; color:#ff0000">
+                         </h2>
+                            {% if the_match is defined %}                   
+                                {% if the_match.getUserRock == 1 and 
+                                    the_match.getCompPaper == 1 %} 
+                                        COVERED BY
+                                {% elseif the_match.getUserRock == 1 and 
+                                    the_match.getCompScissors == 1 %} 
+                                        CRUSHES
+                                {% elseif the_match.getUserRock == 1 and 
+                                    the_match.getCompSpock == 1 %} 
+                                        VAPORIZED BY
+                                {% elseif the_match.getUserRock == 1 and 
+                                    the_match.getCompLizard == 1 %} 
+                                        CRUSHES
+                                {% elseif the_match.getUserPaper == 1 and 
+                                    the_match.getCompRock == 1 %} 
+                                        COVERS
+                                {% elseif the_match.getUserPaper == 1 and 
+                                    the_match.getCompScissors == 1 %} 
+                                        CUT BY
+                                {% elseif the_match.getUserPaper == 1 and 
+                                    the_match.getCompSpock == 1 %} 
+                                        DISPROVES
+                                {% elseif the_match.getUserPaper == 1 and 
+                                    the_match.getCompLizard == 1 %} 
+                                        EATEN BY
+                                {% elseif the_match.getUserScissors == 1 and 
+                                    the_match.getCompRock == 1 %} 
+                                        CRUSHED BY
+                                {% elseif the_match.getUserScissors == 1 and 
+                                    the_match.getCompPaper == 1 %} 
+                                        CUTS
+                                {% elseif the_match.getUserScissors == 1 and 
+                                    the_match.getCompSpock == 1 %} 
+                                        SMASHED BY
+                                {% elseif the_match.getUserScissors == 1 and 
+                                    the_match.getCompLizard == 1 %} 
+                                        DECAPITATES
+                                {% elseif the_match.getUserSpock == 1 and 
+                                    the_match.getCompRock == 1 %} 
+                                        VAPORIZES
+                                {% elseif the_match.getUserSpock == 1 and 
+                                    the_match.getCompPaper == 1 %} 
+                                        DISPROVED BY
+                                {% elseif the_match.getUserSpock == 1 and 
+                                    the_match.getCompScissors == 1 %} 
+                                        SMASHES
+                                {% elseif the_match.getUserSpock == 1 and 
+                                    the_match.getCompLizard == 1 %} 
+                                        POISONED BY
+                                {% elseif the_match.getUserLizard == 1 and 
+                                    the_match.getCompRock == 1 %} 
+                                        CRUSHED BY
+                                {% elseif the_match.getUserLizard == 1 and 
+                                    the_match.getCompPaper == 1 %} 
+                                        EATS
+                                {% elseif the_match.getUserLizard == 1 and 
+                                    the_match.getCompScissors == 1 %} 
+                                        DECAPITATED BY
+                                {% elseif the_match.getUserLizard == 1 and 
+                                    the_match.getCompSpock == 1 %} 
+                                        POISONS
+                                {% endif %}
+                            {% endif %}
+                        </h2>
+                    </td>
+                    <td valign="top" align="center" width="23%">
                         <p>Computer Picked</p>
                         
                         <h2>
@@ -115,4 +184,5 @@
     }
 </style>
 {% endblock %}
+
 
